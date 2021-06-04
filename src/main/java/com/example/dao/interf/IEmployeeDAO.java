@@ -10,8 +10,8 @@ import java.util.List;
 public interface IEmployeeDAO extends IDAO<Employee> {
     /**
      * Finds list with employee.
-     * @param name of department
+     * @param id of department
      * @return list with employee from department
      */
-    List<Employee> findEmployees(String name);
+    List<Employee> findEmployees(Long id);
 }

@@ -20,15 +20,17 @@
         <table class="table">
             <thead>
             <tr>
+                <th>id</th>
                 <th>Name</th>
                 <th>Birthday</th>
-                <th>Room</th>
+                <th>Years Working</th>
                 <th>Email</th>
                 <th><a href="#" class="button">Add employee</a></th>
             </tr>
             </thead>
             <tbody>
             <tr>
+                <td>id</td>
                 <td>Gloria Reeves Reeves</td>
                 <td>0000-00-00</td>
                 <td>000</td>

@@ -10,7 +10,7 @@ public class Employee {
     private Long id;
     private String name;
     private LocalDate birthDate;
-    private Integer room;
+    private Integer yearsWorking;
     private String email;
     private Department department;
 
@@ -38,12 +38,12 @@ public class Employee {
         this.birthDate = birthDate;
     }
 
-    public Integer getRoom() {
-        return room;
+    public Integer getYearsWorking() {
+        return yearsWorking;
     }
 
-    public void setRoom(Integer room) {
-        this.room = room;
+    public void setYearsWorking(Integer yearsWorking) {
+        this.yearsWorking = yearsWorking;
     }
 
     public String getEmail() {
@@ -74,23 +74,23 @@ public class Employee {
         return Objects.equals(id, employee.id)
                 && Objects.equals(name, employee.name)
                 && Objects.equals(birthDate, employee.birthDate)
-                && Objects.equals(room, employee.room)
+                && Objects.equals(yearsWorking, employee.yearsWorking)
                 && Objects.equals(email, employee.email)
                 && Objects.equals(department, employee.department);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, birthDate, room, email, department);
+        return Objects.hash(id, name, birthDate, yearsWorking, email, department);
     }
 
     @Override
     public String toString() {
         return "Employee{" +
-                "id=" + id +
+                ", id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", birthDate=" + birthDate +
-                ", room=" + room +
+                ", yearsWorking=" + yearsWorking +
                 ", email='" + email + '\'' +
                 ", department=" + department +
                 '}';

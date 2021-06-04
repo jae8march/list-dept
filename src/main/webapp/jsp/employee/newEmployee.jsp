@@ -20,9 +20,17 @@
         <form action="action_page.php">
             <div class="container">
                 <hr>
-                <input type="text" placeholder="Enter unique name" name="name" required>
+                <input type="text" placeholder="Name" id="name" name="name" required>
 
-                <input type="text" placeholder="Phone Number" name="phone" required>
+                <input type="text" placeholder="Phone Number" id="phone" name="phone" required>
+
+                <input type="text" placeholder="How many years has it been working" id="yearsWorking" name="yearsWorking" required>
+
+                <input type="text" placeholder="Email" id="email" name="email" required>
+
+                <input type="date" dataformatas="yyyy-MM-dd" id="dateOfBirth" name="dateOfBirth" placeholder="Date Of Birth" required>
+
+                <input type="text" placeholder="Department" name="department" required>
                 <hr>
 
                 <button type="submit" class="add">Add</button>

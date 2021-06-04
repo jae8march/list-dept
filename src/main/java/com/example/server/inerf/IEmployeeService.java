@@ -2,6 +2,7 @@ package com.example.server.inerf;
 
 import com.example.entity.Employee;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 
 /**
@@ -10,15 +11,15 @@ import java.util.List;
 public interface IEmployeeService extends IService<Employee> {
     /**
      * Finds list with employee.
-     * @param name of department
+     * @param id of department
      * @return list with employee from department
      */
-    List<Employee> findFromDepartment(String name);
+    LinkedHashSet<Employee> findFromDepartment(Long id);
 
     /**
      * Delete all employees from department.
-     * @param name of department
+     * @param id of department
      * @return true if delete all employees
      */
-    boolean deleteEmployeesFromDepartment(String name);
+    boolean deleteEmployeesFromDepartment(Long id);
 }

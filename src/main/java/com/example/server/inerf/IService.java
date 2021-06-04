@@ -1,6 +1,6 @@
 package com.example.server.inerf;
 
-import java.util.List;
+import java.util.LinkedHashSet;
 
 /**
  * Main Service.
@@ -8,10 +8,10 @@ import java.util.List;
 public interface IService<T> {
     /**
      * Deletes object by id.
-     * @param key o object
+     * @param id of object
      * @return true if object was deleted
      */
-    boolean delete(String key);
+    boolean delete(Long id);
 
     /**
      * Add new entity in database.
@@ -31,5 +31,5 @@ public interface IService<T> {
      * Finds all data from table.
      * @return list with T
      */
-    List<T> allData();
+    LinkedHashSet<T> allData();
 }

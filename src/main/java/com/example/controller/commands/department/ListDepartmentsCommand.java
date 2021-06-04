@@ -5,7 +5,7 @@ import com.example.entity.Department;
 import com.example.server.impl.DepartmentService;
 import com.example.util.constants.Paths;
 
-import java.util.List;
+import java.util.LinkedHashSet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,7 +24,7 @@ public class ListDepartmentsCommand implements ICommand {
      */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
-        List<Department> departments = departmentService.allData();
+        LinkedHashSet<Department> departments = departmentService.allData();
         request.setAttribute("departments", departments);
         forward(request, response, Paths.LIST_DEPT);
     }

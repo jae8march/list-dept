@@ -20,13 +20,15 @@
         <table class="table">
             <thead>
             <tr>
+                <th>id</th>
                 <th>Name</th>
-                <th>Number</th>
+                <th>Phone Number</th>
                 <th><a href="#" class="button">Add department</a></th>
             </tr>
             </thead>
             <tbody>
             <tr>
+                <td>id</td>
                 <td>Gloria Reeves Reeves</td>
                 <td>Reeve s Reeves Reeves Reeves Reeves Reeves</td>
                 <td>

@@ -22,7 +22,7 @@
                 <hr>
                 <input type="text" placeholder="Enter unique name" name="name" required>
 
-                <input type="text" placeholder="Email" name="email" required>
+                <input type="text" placeholder="phone" name="phone" required>
                 <hr>
 
                 <button type="submit" class="add">Add</button>

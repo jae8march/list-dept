@@ -5,6 +5,7 @@ import com.example.entity.Employee;
 import com.example.server.impl.EmployeeService;
 import com.example.util.constants.Paths;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,9 +25,9 @@ public class ListEmployeesCommand implements ICommand {
      */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
-        String deptName = request.getParameter("deptName");
+        Long deptId = Long.valueOf(request.getParameter("deptId"));
 
-        List<Employee> employees = employeeService.findFromDepartment(deptName);
+        LinkedHashSet<Employee> employees = employeeService.findFromDepartment(deptId);
         request.setAttribute("employees", employees);
         forward(request, response, Paths.LIST_EMPL);
     }

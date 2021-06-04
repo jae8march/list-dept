@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Deletes department by name.
+ * Deletes department.
  */
 public class DeleteDepartmentCommand implements ICommand {
     private final DepartmentService departmentService;
@@ -26,10 +26,10 @@ public class DeleteDepartmentCommand implements ICommand {
      */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
-        String nameOfDepartment = request.getParameter("deleteName");
+        Long deptDeleteId = Long.valueOf(request.getParameter("deptDeleteId"));
 
-        employeeService.deleteEmployeesFromDepartment(nameOfDepartment);
-        departmentService.delete(nameOfDepartment);
+        employeeService.deleteEmployeesFromDepartment(deptDeleteId);
+        departmentService.delete(deptDeleteId);
 
         redirect(request, response, Paths.LIST_DEPT);
     }

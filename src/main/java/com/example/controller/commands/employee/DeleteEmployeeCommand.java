@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Deletes employee by mail.
+ * Deletes employee.
  */
 public class DeleteEmployeeCommand implements ICommand {
     private final EmployeeService employeeService;
@@ -22,8 +22,8 @@ public class DeleteEmployeeCommand implements ICommand {
      */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
-        String mail = request.getParameter("deleteMail");
-        employeeService.delete(mail);
+        Long deptId = Long.valueOf(request.getParameter("deptId"));
+        employeeService.delete(deptId);
         redirect(request, response, Paths.LIST_EMPL);
     }
 }
