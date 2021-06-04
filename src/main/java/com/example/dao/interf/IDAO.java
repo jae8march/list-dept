@@ -22,10 +22,10 @@ public interface IDAO<T>  {
 
     /**
      * Removes an object by it's id.
-     * @param id object to delete
+     * @param key object to delete
      * @return Deleted object
      */
-    T delete(Long id);
+    T delete(String key);
 
     /**
      * Finds all data from table

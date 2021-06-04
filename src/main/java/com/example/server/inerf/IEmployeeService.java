@@ -10,8 +10,8 @@ import java.util.List;
 public interface IEmployeeService extends IService<Employee> {
     /**
      * Finds list with employee
-     * @param id department
+     * @param name of department
      * @return list with employee from department
      */
-    List<Employee> findFromDepartment(Long id);
+    List<Employee> findFromDepartment(String name);
 }

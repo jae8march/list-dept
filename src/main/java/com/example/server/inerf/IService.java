@@ -8,10 +8,10 @@ import java.util.List;
 public interface IService<T> {
     /**
      * Deletes object by id.
-     * @param id
+     * @param key o object
      * @return true if object was deleted
      */
-    boolean delete(long id);
+    boolean delete(String key);
 
     /**
      * Add new entity in database.

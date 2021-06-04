@@ -6,8 +6,8 @@
     <title>List of employees</title>
 </head>
 <style>
-    <%@include file='../style/table.css' %>
-    <%@include file='../style/main.css' %>
+    <%@include file='../../style/table.css' %>
+    <%@include file='../../style/main.css' %>
 </style>
 
 <body>
