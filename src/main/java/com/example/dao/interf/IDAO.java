@@ -28,8 +28,8 @@ public interface IDAO<T>  {
     T delete(String key);
 
     /**
-     * Finds all data from table
-     * @return
+     * Finds all data from table.
+     * @return list of all data in table
      */
     List<T> findAll();
 }

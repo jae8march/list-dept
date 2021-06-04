@@ -1,4 +1,4 @@
-package com.example.util;
+package com.example.util.constants;
 
 /**
  * Column names from tables.
@@ -6,13 +6,13 @@ package com.example.util;
 public final class Column {
     private Column() { }
 
-    /** Table 'employee' */
+    /** Table 'employee'. */
     public static final String EMPLOYEE_NAME = "employee_name";
     public static final String EMPLOYEE_BIRTH = "employee_birth";
     public static final String EMPLOYEE_ROOM = "employee_room";
     public static final String EMPLOYEE_EMAIL = "employee_email";
 
-    /** Table 'dept' */
+    /** Table 'dept'. */
     public static final String DEPARTMENT_NAME = "dept_name";
     public static final String DEPARTMENT_PHONE_NUMBER = "dept_phone_number";
 }

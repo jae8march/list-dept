@@ -3,11 +3,11 @@ package com.example.controller.commands.employee;
 import com.example.controller.ICommand;
 import com.example.entity.Employee;
 import com.example.server.impl.EmployeeService;
-import com.example.util.Paths;
+import com.example.util.constants.Paths;
 
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 /**
  * Finds all employees in the department in the database.

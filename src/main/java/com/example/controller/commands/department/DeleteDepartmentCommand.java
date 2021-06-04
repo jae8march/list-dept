@@ -3,7 +3,7 @@ package com.example.controller.commands.department;
 import com.example.controller.ICommand;
 import com.example.server.impl.DepartmentService;
 import com.example.server.impl.EmployeeService;
-import com.example.util.Paths;
+import com.example.util.constants.Paths;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

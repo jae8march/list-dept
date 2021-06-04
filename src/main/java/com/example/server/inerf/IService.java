@@ -3,7 +3,7 @@ package com.example.server.inerf;
 import java.util.List;
 
 /**
- * Main Service
+ * Main Service.
  */
 public interface IService<T> {
     /**
@@ -28,7 +28,7 @@ public interface IService<T> {
     boolean add(T entity);
 
     /**
-     * Finds all data from table
+     * Finds all data from table.
      * @return list with T
      */
     List<T> allData();

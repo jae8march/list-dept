@@ -3,11 +3,11 @@ package com.example.controller.commands.department;
 import com.example.controller.ICommand;
 import com.example.entity.Department;
 import com.example.server.impl.DepartmentService;
-import com.example.util.Paths;
+import com.example.util.constants.Paths;
 
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 /**
  * Finds all departments in the database.

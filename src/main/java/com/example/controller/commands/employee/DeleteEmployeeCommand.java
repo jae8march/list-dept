@@ -2,7 +2,7 @@ package com.example.controller.commands.employee;
 
 import com.example.controller.ICommand;
 import com.example.server.impl.EmployeeService;
-import com.example.util.Paths;
+import com.example.util.constants.Paths;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

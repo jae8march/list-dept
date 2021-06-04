@@ -1,12 +1,12 @@
 package com.example.controller;
 
+import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 /**
- * Interface for implementing servlet commands
+ * Interface for implementing servlet commands.
  */
 public interface ICommand {
     /**

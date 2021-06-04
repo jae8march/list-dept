@@ -5,11 +5,11 @@ import com.example.entity.Employee;
 import java.util.List;
 
 /**
- * Interface for EmployeeDAO
+ * Interface for EmployeeDAO.
  */
 public interface IEmployeeDAO extends IDAO<Employee> {
     /**
-     * Finds list with employee
+     * Finds list with employee.
      * @param name of department
      * @return list with employee from department
      */
