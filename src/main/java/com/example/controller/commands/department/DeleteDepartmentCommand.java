@@ -8,6 +8,9 @@ import com.example.util.Paths;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Deletes department by name.
+ */
 public class DeleteDepartmentCommand implements ICommand {
     private final DepartmentService departmentService;
     private final EmployeeService employeeService;
@@ -18,6 +21,7 @@ public class DeleteDepartmentCommand implements ICommand {
     }
 
     /**
+     * If the department has employees, it first deletes employees, then the department itself.
      * {@link ICommand#execute}
      */
     @Override

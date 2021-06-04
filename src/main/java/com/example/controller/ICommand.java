@@ -21,7 +21,7 @@ public interface ICommand {
     /**
      * Processes the request and is redirected to another page with the information received from the request,
      * processes the request on the server side.
-     *HttpServletRequest - хранит информацию о запросе и HttpServletResponse - управляет ответом на запрос.
+     *
      * @param request with information for processing
      * @param response with processed information from the request
      * @param path where to redirect the user after processing the data
@@ -37,6 +37,7 @@ public interface ICommand {
     /**
      * Processes the request and is redirected to another page without information from the request,
      * processes the request on the client side.
+     *
      * @param request with information for processing
      * @param response with processed information from the request
      * @param path where to redirect the user after processing the data
