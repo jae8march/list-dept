@@ -1,0 +1,55 @@
+/* Table */
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.table th {
+    font-weight: bold;
+    padding: 5px;
+    background: #efefef;
+    border: 1px solid #dddddd;
+}
+
+.table td {
+    border: 1px solid #dddddd;
+    padding: 5px;
+    text-align: center;
+}
+
+.table tr td:first-child, .table tr th:first-child {
+    border-left: none;
+}
+
+.table tr td:last-child, .table tr th:last-child {
+    border-right: none;
+}
+/* Button in table */
+.table li {
+    list-style-type: none;
+    margin-bottom: 5px;
+}
+.table ul {
+    padding-left: 0;
+}
+
+a.button {
+    display: inline-block;
+    font-weight: 700;
+    user-select: none;
+    text-decoration: none;
+    padding: .2em 1em;
+    outline: none;
+    border: 2px solid;
+    border-radius: 1px;
+    transition: 0.2s;
+}
+a.button:hover {
+    background: rgba(255,255,255,.2);
+    text-decoration: none;
+}
+
+a.button:active {
+    background: white;
+}
