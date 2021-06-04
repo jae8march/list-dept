@@ -14,4 +14,11 @@ public interface IEmployeeService extends IService<Employee> {
      * @return list with employee from department
      */
     List<Employee> findFromDepartment(String name);
+
+    /**
+     * Delete all employees from department
+     * @param name of department
+     * @return true if delete all employees
+     */
+    boolean deleteEmployeesFromDepartment(String name);
 }
