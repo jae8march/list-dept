@@ -1,6 +1,6 @@
 package com.example.server.inerf;
 
-import java.util.LinkedHashSet;
+import java.util.Set;
 
 /**
  * Main Service.
@@ -31,5 +31,5 @@ public interface IService<T> {
      * Finds all data from table.
      * @return list with T
      */
-    LinkedHashSet<T> allData();
+    Set<T> allData();
 }

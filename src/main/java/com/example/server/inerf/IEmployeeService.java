@@ -2,8 +2,7 @@ package com.example.server.inerf;
 
 import com.example.entity.Employee;
 
-import java.util.LinkedHashSet;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Interface service for EmployeeDAO.
@@ -14,7 +13,7 @@ public interface IEmployeeService extends IService<Employee> {
      * @param id of department
      * @return list with employee from department
      */
-    LinkedHashSet<Employee> findFromDepartment(Long id);
+    Set<Employee> findFromDepartment(Long id);
 
     /**
      * Delete all employees from department.

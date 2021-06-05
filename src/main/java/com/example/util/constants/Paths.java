@@ -3,7 +3,7 @@ package com.example.util.constants;
 /**
  * Class with jsp-file path.
  */
-public class Paths {
+public final class Paths {
     private Paths(){}
 
     /** Path to jsp-files. */

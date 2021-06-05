@@ -5,6 +5,6 @@ import com.example.entity.Department;
 /**
  * Interface for DepartmentDAO.
  */
-public interface IDepartmentDAO extends IDAO<Department> {
+public interface IDepartmentDao extends IDao<Department> {
 
 }
