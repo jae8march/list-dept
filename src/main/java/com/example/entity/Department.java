@@ -18,6 +18,12 @@ public class Department {
         this.number = number;
     }
 
+    public Department(Long id, String name, String number) {
+        this.id = id;
+        this.name = name;
+        this.number = number;
+    }
+
     public Long getId() {
         return id;
     }

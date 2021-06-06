@@ -9,6 +9,13 @@ import java.util.Set;
  */
 public interface IEmployeeDao extends IDao<Employee> {
     /**
+     * Finds all matches by email.
+     * @param expression email of employee
+     * @return true, if found at least one match
+     */
+    int findAllEmployeeByEmail(String expression);
+
+    /**
      * Finds list with employee.
      * @param id of employee
      * @return list with employee from department
@@ -16,7 +23,7 @@ public interface IEmployeeDao extends IDao<Employee> {
     Set<Employee> findEmployees(Long id);
 
     /**
-     * Delete all employees from department
+     * Delete all employees from department.
      * @param id of department
      * @return true if the operation was successful
      */

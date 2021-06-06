@@ -7,25 +7,25 @@ import java.util.Set;
  */
 public interface IService<T> {
     /**
-     * Deletes object by id.
-     * @param id of object
-     * @return true if object was deleted
-     */
-    boolean delete(Long id);
-
-    /**
-     * Add new entity in database.
-     * @param entity
+     * Adds row in table if input entity is not already exist.
+     * @param entity to add
      * @return true if object was created
      */
     boolean create(T entity);
 
     /**
-     * Adds row in table if input entity is not already exist.
-     * @param entity to add
+     * Update data in database.
+     * @param entity to update
      * @return true if was added
      */
-    boolean add(T entity);
+    boolean update(T entity);
+
+    /**
+     * Deletes object by id.
+     * @param id of object
+     * @return true if object was deleted
+     */
+    boolean delete(Long id);
 
     /**
      * Finds all data from table.

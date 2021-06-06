@@ -7,6 +7,6 @@ package com.example.dao.interf;
  */
 @FunctionalInterface
 public interface Mapper<S, T> {
-    T map(S source, T object);
+    T map(S source);
 }
 

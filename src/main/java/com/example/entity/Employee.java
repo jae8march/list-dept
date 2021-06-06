@@ -14,6 +14,26 @@ public class Employee {
     private String email;
     private Department department;
 
+    public Employee() {
+    }
+
+    public Employee(String name, LocalDate birthDate, Integer yearsWorking, String email, Department department) {
+        this.name = name;
+        this.birthDate = birthDate;
+        this.yearsWorking = yearsWorking;
+        this.email = email;
+        this.department = department;
+    }
+
+    public Employee(Long id, String name, LocalDate birthDate, Integer yearsWorking, String email, Department department) {
+        this.id = id;
+        this.name = name;
+        this.birthDate = birthDate;
+        this.yearsWorking = yearsWorking;
+        this.email = email;
+        this.department = department;
+    }
+
     public Long getId() {
         return id;
     }

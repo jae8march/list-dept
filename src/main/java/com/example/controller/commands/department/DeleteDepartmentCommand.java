@@ -28,7 +28,7 @@ public class DeleteDepartmentCommand implements ICommand {
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         Long deptDeleteId = Long.valueOf(request.getParameter("deptDeleteId"));
 
-        employeeService.deleteEmployeesFromDepartment(deptDeleteId);
+        employeeService.deleteEmployeesFromDept(deptDeleteId);
         departmentService.delete(deptDeleteId);
 
         redirect(request, response, Paths.LIST_DEPT);
