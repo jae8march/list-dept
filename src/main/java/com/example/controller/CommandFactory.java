@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.controller.commands.additional.ErrorCommand;
 import com.example.controller.commands.department.AddDepartmentCommand;
 import com.example.controller.commands.department.AddPageDepartmentCommand;
 import com.example.controller.commands.department.DeleteDepartmentCommand;
@@ -59,6 +60,7 @@ public class CommandFactory {
 
     public ICommand getCommand(HttpServletRequest request) {
         String action = request.getParameter("action");
-        return commands.get(action);
+        ICommand command = commands.get(action);
+        return command == null ? new ErrorCommand() : command;
     }
 }

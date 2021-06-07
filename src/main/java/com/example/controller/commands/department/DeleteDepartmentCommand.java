@@ -31,6 +31,6 @@ public class DeleteDepartmentCommand implements ICommand {
         employeeService.deleteEmployeesFromDept(deptDeleteId);
         departmentService.delete(deptDeleteId);
 
-        redirect(request, response, Paths.LIST_DEPT);
+        forward(request, response, Paths.LIST_DEPT);
     }
 }

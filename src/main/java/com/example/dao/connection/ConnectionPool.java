@@ -17,7 +17,7 @@ public class ConnectionPool {
     private static HikariDataSource dataSource;
 
     private String jdbcUrl;
-//    private String databaseName;
+    private String driverClassName;
     private String user;
     private String pass;
     private String maxLifetime;
@@ -44,7 +44,7 @@ public class ConnectionPool {
             Properties properties = new Properties();
             properties.load(getClass().getClassLoader().getResourceAsStream(PROP_FILE_NAME));
             jdbcUrl = properties.getProperty("jdbcUrl");
-//            databaseName = properties.getProperty("databaseName");
+            driverClassName = properties.getProperty("driverClassName");
             user = properties.getProperty("username");
             pass = properties.getProperty("password");
             maxLifetime = properties.getProperty("maxLifetime");
@@ -55,7 +55,7 @@ public class ConnectionPool {
     }
 
     private void getConfig() {
-//        config.setDataSourceClassName(dataSourceClassName);
+        config.setDriverClassName(driverClassName);
         config.setJdbcUrl(jdbcUrl);
         config.setUsername(user);
         config.setPassword(pass);
