@@ -3,7 +3,7 @@ package com.example.controller.commands.department;
 import com.example.controller.ICommand;
 import com.example.server.impl.DepartmentService;
 import com.example.server.impl.EmployeeService;
-import com.example.util.constants.Paths;
+import com.example.util.constants.Actions;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,11 +26,11 @@ public class DeleteDepartmentCommand implements ICommand {
      */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
-        Long deptDeleteId = Long.valueOf(request.getParameter("deptDeleteId"));
+        Long deptId = Long.valueOf(request.getParameter("deptId"));
 
-        employeeService.deleteEmployeesFromDept(deptDeleteId);
-        departmentService.delete(deptDeleteId);
+        employeeService.deleteEmployeesFromDept(deptId);
+        departmentService.delete(deptId);
 
-        forward(request, response, Paths.LIST_DEPT);
+        redirect(request, response, Actions.ACTION_DEPT_LIST);
     }
 }

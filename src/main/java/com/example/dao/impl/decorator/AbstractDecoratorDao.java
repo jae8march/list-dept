@@ -110,4 +110,27 @@ public abstract class AbstractDecoratorDao<T> {
         }
         return count;
     }
+
+    /**
+     * Find entity by id table.
+     * @param connection to database
+     * @param queries to table
+     * @param id of entity
+     * @return entity
+     */
+    protected T findById(Connection connection, String queries, Long id, T entity) {
+        try (PreparedStatement statement = connection.prepareStatement(queries)){
+            statement.setLong(1, id);
+            ResultSet resultSet = statement.executeQuery();
+
+            resultSet.next();
+            entity = mapperFromSql.map(resultSet);
+
+            resultSet.close();
+            connection.close();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+        return entity;
+    }
 }

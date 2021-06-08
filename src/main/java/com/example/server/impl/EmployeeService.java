@@ -12,13 +12,13 @@ import java.util.Set;
  */
 public class EmployeeService implements IEmployeeService {
     SingletonConnection connection = SingletonConnection.getInstance();
-    EmployeeDAO employeeDao = connection.getEmployeeDao();
 
     /**
      * {@link IEmployeeService#findByEmail(String)}
      */
     @Override
     public int findByEmail(String expression) {
+        EmployeeDAO employeeDao = connection.getEmployeeDao();
         return employeeDao.findAllEmployeeByEmail(expression);
     }
 
@@ -27,6 +27,7 @@ public class EmployeeService implements IEmployeeService {
      */
     @Override
     public Set<Employee> findFromDept(Long id) {
+        EmployeeDAO employeeDao = connection.getEmployeeDao();
         return employeeDao.findEmployees(id);
     }
 
@@ -35,6 +36,7 @@ public class EmployeeService implements IEmployeeService {
      */
     @Override
     public boolean deleteEmployeesFromDept(Long id) {
+        EmployeeDAO employeeDao = connection.getEmployeeDao();
         return employeeDao.deleteFromDepartment(id);
     }
 
@@ -43,6 +45,7 @@ public class EmployeeService implements IEmployeeService {
      */
     @Override
     public boolean create(Employee entity) {
+        EmployeeDAO employeeDao = connection.getEmployeeDao();
         return employeeDao.addInDataBase(entity);
     }
 
@@ -51,6 +54,7 @@ public class EmployeeService implements IEmployeeService {
      */
     @Override
     public boolean update(Employee entity) {
+        EmployeeDAO employeeDao = connection.getEmployeeDao();
         return employeeDao.updateDataBase(entity);
     }
 
@@ -58,8 +62,11 @@ public class EmployeeService implements IEmployeeService {
      * {@link IService#delete(Long)}
      */
     @Override
-    public boolean delete(Long id) {
-        return employeeDao.deleteFromDataBase(id);
+    public Employee delete(Long id) {
+        EmployeeDAO employeeDao = connection.getEmployeeDao();
+        Employee employee = this.findEntity(id);
+        employeeDao.deleteFromDataBase(id);
+        return employee;
     }
 
     /**
@@ -67,6 +74,17 @@ public class EmployeeService implements IEmployeeService {
      */
     @Override
     public Set<Employee> allData() {
+        EmployeeDAO employeeDao = connection.getEmployeeDao();
         return employeeDao.findAllFromDataBase();
+    }
+
+
+    /**
+     * {@link IService#findEntity(Long)}
+     */
+    @Override
+    public Employee findEntity(Long id) {
+        EmployeeDAO employeeDao = connection.getEmployeeDao();
+        return employeeDao.findByIdInDataBase(id);
     }
 }

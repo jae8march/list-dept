@@ -13,13 +13,13 @@ import java.util.Set;
  */
 public class DepartmentService implements IDepartmentService {
     SingletonConnection connection = SingletonConnection.getInstance();
-    DepartmentDAO departmentDao = connection.getDepartmentDao();
 
     /**
      * {@link IDepartmentService#findByName(String)}
      */
     @Override
     public int findByName(String expression) {
+        DepartmentDAO departmentDao = connection.getDepartmentDao();
         return departmentDao.findAllDepartmentByName(expression);
     }
 
@@ -28,6 +28,7 @@ public class DepartmentService implements IDepartmentService {
      */
     @Override
     public boolean create(Department entity) {
+        DepartmentDAO departmentDao = connection.getDepartmentDao();
         return departmentDao.addInDataBase(entity);
     }
 
@@ -36,6 +37,7 @@ public class DepartmentService implements IDepartmentService {
      */
     @Override
     public boolean update(Department entity) {
+        DepartmentDAO departmentDao = connection.getDepartmentDao();
         return departmentDao.updateDataBase(entity);
     }
 
@@ -43,8 +45,11 @@ public class DepartmentService implements IDepartmentService {
      * {@link IService#delete(Long)}
      */
     @Override
-    public boolean delete(Long id) {
-        return departmentDao.deleteFromDataBase(id);
+    public Department delete(Long id) {
+        DepartmentDAO departmentDao = connection.getDepartmentDao();
+        Department department = this.findEntity(id);
+        departmentDao.deleteFromDataBase(id);
+        return department;
     }
 
     /**
@@ -52,8 +57,16 @@ public class DepartmentService implements IDepartmentService {
      */
     @Override
     public Set<Department> allData() {
+        DepartmentDAO departmentDao = connection.getDepartmentDao();
         return departmentDao.findAllFromDataBase();
     }
 
-
+    /**
+     * {@link IService#findEntity(Long)}
+     */
+    @Override
+    public Department findEntity(Long id) {
+        DepartmentDAO departmentDao = connection.getDepartmentDao();
+        return departmentDao.findByIdInDataBase(id);
+    }
 }

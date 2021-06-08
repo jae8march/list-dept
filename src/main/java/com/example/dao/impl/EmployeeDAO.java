@@ -15,6 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class EmployeeDAO extends AbstractDecoratorDao<Employee> implements IEmployeeDao {
@@ -102,11 +103,33 @@ public class EmployeeDAO extends AbstractDecoratorDao<Employee> implements IEmpl
     }
 
     /**
+     * {@link IDao#findByIdInDataBase(Long)}
+     */
+    @Override
+    public Employee findByIdInDataBase(Long id) {
+        return findById(connection, QueriesSql.SQL_FIND_EMPLOYEE, id, new Employee());
+    }
+
+    /**
      * {@link IEmployeeDao#findEmployees(Long)}
      */
     @Override
     public Set<Employee> findEmployees(Long id) {
-        return findAll(connection, QueriesSql.SQL_ALL_EMPLOYEE_FROM_DEPARTMENT);
+        Set<Employee> set = new LinkedHashSet<>();
+        try (PreparedStatement statement = connection.prepareStatement(QueriesSql.SQL_ALL_EMPLOYEE_FROM_DEPARTMENT)) {
+            statement.setLong(1, id);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                set.add(mapperFromSql.map(resultSet));
+            }
+
+            resultSet.close();
+            connection.close();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+        return set;
     }
 
     /**

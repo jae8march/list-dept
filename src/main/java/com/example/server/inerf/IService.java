@@ -23,13 +23,20 @@ public interface IService<T> {
     /**
      * Deletes object by id.
      * @param id of object
-     * @return true if object was deleted
+     * @return the object that was deleted
      */
-    boolean delete(Long id);
+    T delete(Long id);
 
     /**
      * Finds all data from table.
      * @return list with T
      */
     Set<T> allData();
+
+    /**
+     * Finds data about entity from database.
+     * @param id of entity
+     * @return entity from table
+     */
+    T findEntity(Long id);
 }

@@ -23,22 +23,44 @@
                 <th>id</th>
                 <th>Name</th>
                 <th>Phone Number</th>
-                <th><a href="#" class="button">Add department</a></th>
+                <th><a href="${pageContext.request.contextPath}/app?action=addPageDept" class="button">Add department</a></th>
             </tr>
             </thead>
             <tbody>
+            <c:forEach items="${departments}" var="departments">
             <tr>
-                <td>id</td>
-                <td>Gloria Reeves Reeves</td>
-                <td>Reeve s Reeves Reeves Reeves Reeves Reeves</td>
+                <td><c:out value="${departments.id}"/></td>
+                <td><c:out value="${departments.name}"/></td>
+                <td><c:out value="${departments.number}"/></td>
                 <td>
                     <ul>
-                        <li><a href="#" class="button">Update</a></li>
-                        <li><a href="#" class="button">List of employees</a></li>
-                        <li><a href="#" class="button">Delete</a></li>
+                        <li>
+                            <form name="deleteDept" action="${pageContext.request.contextPath}/app?action=editPageDept" method="post">
+                                <button name = "deptId" value="${departments.id}" class="button" type="submit">
+                                    Edit
+                                </button>
+                            </form>
+                        </li>
+                        <li>
+                        </li>
+                        <li>
+                            <form name="deleteDept" action="${pageContext.request.contextPath}/app?action=listEmpl" method="post">
+                                <button name = "deptId" value="${departments.id}" class="button" type="submit">
+                                    List of employees
+                                </button>
+                            </form>
+                        </li>
+                        <li>
+                            <form name="deleteDept" action="${pageContext.request.contextPath}/app?action=deleteDept" method="post">
+                                <button name = "deptId" value="${departments.id}" class="button" type="submit">
+                                    Delete
+                                </button>
+                            </form>
+                        </li>
                     </ul>
                 </td>
             </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>

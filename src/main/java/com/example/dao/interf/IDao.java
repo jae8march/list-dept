@@ -32,4 +32,10 @@ public interface IDao<T>  {
      */
     Set<T> findAllFromDataBase();
 
+    /**
+     * Finds entity in table by id.
+     * @param id of entity
+     * @return entity from database
+     */
+    T findByIdInDataBase(Long id);
 }

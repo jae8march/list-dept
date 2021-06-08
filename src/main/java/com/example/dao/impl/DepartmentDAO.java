@@ -84,6 +84,11 @@ public class DepartmentDAO extends AbstractDecoratorDao<Department> implements I
         return findAll(connection, QueriesSql.SQL_ALL_DEPARTMENT);
     }
 
+    @Override
+    public Department findByIdInDataBase(Long id) {
+        return findById(connection, QueriesSql.SQL_FIND_DEPARTMENT, id, new Department());
+    }
+
     /**
      * Mapper for creating Department from ResultSet.
      * {@link Mapper#map(Object)}

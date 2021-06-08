@@ -2,7 +2,7 @@ package com.example.controller.commands.employee;
 
 import com.example.controller.ICommand;
 import com.example.server.impl.EmployeeService;
-import com.example.util.constants.Paths;
+import com.example.util.constants.Actions;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,8 +22,9 @@ public class DeleteEmployeeCommand implements ICommand {
      */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
-        Long deptId = Long.valueOf(request.getParameter("deptId"));
-        employeeService.delete(deptId);
-        forward(request, response, Paths.LIST_EMPL);
+        Long emplId = Long.valueOf(request.getParameter("emplId"));
+
+        employeeService.delete(emplId);
+        redirect(request, response, Actions.ACTION_EMPLOYEE_LIST);
     }
 }

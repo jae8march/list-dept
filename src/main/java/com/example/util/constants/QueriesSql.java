@@ -7,6 +7,8 @@ public final class QueriesSql {
     private QueriesSql(){}
 
     /** EMPLOYEE */
+    public static final String SQL_FIND_EMPLOYEE = "SELECT * FROM employee WHERE employee_id=?";
+
     public static final String SQL_COUNT_ROW_EMPLOYEE = "SELECT count(*) FROM employee";
     public static final String SQL_CREATE_EMPLOYEE = "INSERT INTO employee VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -22,6 +24,8 @@ public final class QueriesSql {
     public static final String SQL_EMPLOYEE_EMAIL = "SELECT count(*) FROM employee WHERE employee_email=?";
 
     /** DEPARTMENT */
+    public static final String SQL_FIND_DEPARTMENT = "SELECT * FROM dept  WHERE dept_id=?";
+
     public static final String SQL_COUNT_ROW_DEPARTMENT = "SELECT count(*) FROM dept";
     public static final String SQL_CREATE_DEPARTMENT = "INSERT INTO dept VALUES (?, ?, ?)";
 
