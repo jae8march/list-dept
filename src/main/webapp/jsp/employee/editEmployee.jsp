@@ -45,6 +45,8 @@
                 <input type="date" value="${employee.birthDate}" id="dateOfBirth" name="dateOfBirth" placeholder="Date Of Birth" required>
                 <hr>
 
+                <input type="hidden" name="emplId" value="${employee.id}">
+
                 <button type="submit" class="add">Edit</button>
             </div>
 

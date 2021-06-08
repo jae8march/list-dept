@@ -20,6 +20,10 @@ public class ConnectionPool {
     private String driverClassName;
     private String user;
     private String pass;
+    private int maximumPoolSize;
+    private int minimumIdle;
+    private int connectionTimeout;
+
 
     /**
      * Creates configuration to the pool and connection.
@@ -45,6 +49,9 @@ public class ConnectionPool {
             driverClassName = properties.getProperty("driverClassName");
             user = properties.getProperty("username");
             pass = properties.getProperty("password");
+            maximumPoolSize = Integer.parseInt(properties.getProperty("maximumPoolSize"));
+            minimumIdle = Integer.parseInt(properties.getProperty("minimumIdle"));
+            connectionTimeout = Integer.parseInt(properties.getProperty("connectionTimeout"));
         } catch (IOException exception) {
             exception.printStackTrace();
         }
@@ -55,6 +62,9 @@ public class ConnectionPool {
         config.setJdbcUrl(jdbcUrl);
         config.setUsername(user);
         config.setPassword(pass);
+        config.setMaximumPoolSize(maximumPoolSize);
+        config.setMinimumIdle(minimumIdle);
+        config.setConnectionTimeout(connectionTimeout);
         dataSource = new HikariDataSource(config);
     }
 }

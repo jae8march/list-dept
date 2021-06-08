@@ -17,16 +17,17 @@ import java.util.Set;
  */
 public abstract class AbstractDecoratorDao<T> {
     protected Mapper<ResultSet, T> mapperFromSql;
+    protected Connection connection;
 
     /**
      * Finds all in table.
-     * @param connection to database
      * @param queries to table
      * @return set of entities from database, table
      */
-    protected Set<T> findAll(Connection connection, String queries) {
+    protected Set<T> findAll(String queries) {
         Set<T> set = new LinkedHashSet<>();
         try (PreparedStatement statement = connection.prepareStatement(queries)) {
+
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
@@ -43,12 +44,11 @@ public abstract class AbstractDecoratorDao<T> {
 
     /**
      * Delete data from database.
-     * @param connection to database
      * @param id of key in table
      * @param queries to table
      * @return true, if object was deleted from database
      */
-    protected boolean statementWithParameter(Connection connection, Long id, String queries) {
+    protected boolean statementWithParameter(Long id, String queries) {
         try (PreparedStatement statement = connection.prepareStatement(queries)) {
             statement.setLong(1, id);
 
@@ -63,12 +63,11 @@ public abstract class AbstractDecoratorDao<T> {
 
     /**
      * Delete data from database.
-     * @param connection to database
      * @param expression of key in table
      * @param queries to table
      * @return true, if object was deleted from database
      */
-    protected int findCountByExpression(Connection connection, String expression, String queries) {
+    protected int findCountByExpression(String expression, String queries) {
         int count = 0;
         try (PreparedStatement statement = connection.prepareStatement(queries)) {
             statement.setString(1, expression);
@@ -90,13 +89,13 @@ public abstract class AbstractDecoratorDao<T> {
 
     /**
      * Finds count rows in table.
-     * @param connection to database
      * @param queries to table
      * @return count of rows
      */
-    protected Long findCount(Connection connection, String queries) {
+    protected Long findCount(String queries) {
         long count = 0;
         try (PreparedStatement statement = connection.prepareStatement(queries)) {
+
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
@@ -113,14 +112,14 @@ public abstract class AbstractDecoratorDao<T> {
 
     /**
      * Find entity by id table.
-     * @param connection to database
      * @param queries to table
      * @param id of entity
      * @return entity
      */
-    protected T findById(Connection connection, String queries, Long id, T entity) {
-        try (PreparedStatement statement = connection.prepareStatement(queries)){
+    protected T findById(String queries, Long id, T entity) {
+        try (PreparedStatement statement = connection.prepareStatement(queries)) {
             statement.setLong(1, id);
+
             ResultSet resultSet = statement.executeQuery();
 
             resultSet.next();

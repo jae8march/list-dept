@@ -21,25 +21,25 @@
         <form action="${pageContext.request.contextPath}/app?action=addEmpl" method="post">
             <div class="container">
                 <div class="container error">
-                    <c:if test="${not empty requestScope.error_list}">
-                        <c:forEach items="${errorList}" var="errorList">
-                            <p><c:out value="${errorList}"/></p>
+                    <c:if test="${not empty requestScope.errorList}">
+                        <c:forEach items="${errorList}" var="error">
+                            <p>${error}</p>
                         </c:forEach>
                     </c:if>
                 </div>
 
                 <hr>
                 <label for="name" class="label">Name of employee</label>
-                <input type="text" placeholder="Name" value="${emplName}" id="name" name="name" required>
+                <input type="text" placeholder="Name" value="${name}" id="name" name="name" required>
 
                 <label for="yearsWorking" class="label">How many years has it been working</label>
-                <input type="text" placeholder="Experience" value="${emplYears}" id="yearsWorking" name="yearsWorking" required>
+                <input type="text" placeholder="Experience" value="${yearsWorking}" id="yearsWorking" name="yearsWorking" required>
 
                 <label for="email" class="label">Email</label>
-                <input type="text" placeholder="Email" value="${emplEmail}" id="email" name="email" required>
+                <input type="text" placeholder="Email" value="${email}" id="email" name="email" required>
 
                 <label for="dateOfBirth" class="label">Birthday</label>
-                <input type="date" value="${emplBirth}" id="dateOfBirth" name="dateOfBirth" placeholder="Date Of Birth" required>
+                <input type="date" value="${birthDate}" id="dateOfBirth" name="dateOfBirth" placeholder="Date Of Birth" required>
                 <hr>
 
                 <button type="submit" class="add">Add</button>

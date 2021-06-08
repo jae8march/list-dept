@@ -9,13 +9,6 @@ import java.util.Set;
  */
 public interface IEmployeeDao extends IDao<Employee> {
     /**
-     * Finds all matches by email.
-     * @param expression email of employee
-     * @return true, if found at least one match
-     */
-    int findAllEmployeeByEmail(String expression);
-
-    /**
      * Finds list with employee.
      * @param id of employee
      * @return list with employee from department

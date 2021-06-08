@@ -8,9 +8,10 @@ public interface IDao<T>  {
     /**
      * Adds row in table if input entity is not already exist.
      * @param entity to add
+     * @param id of new entity
      * @return true if was added
      */
-    boolean addInDataBase(T entity);
+    boolean addInDataBase(T entity, Long id);
 
     /**
      * Updates the data for an entity in a table.
@@ -38,4 +39,17 @@ public interface IDao<T>  {
      * @return entity from database
      */
     T findByIdInDataBase(Long id);
+
+    /**
+     * Finds count rows in table.
+     * @return count of rows
+     */
+    Long findCountInDataBase();
+
+    /**
+     * Finds an object by a expression column in a table.
+     * @param expression key
+     * @return count of rows wit
+     */
+    int findCountByExpressionInDataBase(String expression);
 }

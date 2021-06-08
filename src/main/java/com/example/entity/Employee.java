@@ -25,7 +25,8 @@ public class Employee {
         this.department = department;
     }
 
-    public Employee(Long id, String name, LocalDate birthDate, Integer yearsWorking, String email, Department department) {
+    public Employee(Long id, String name, LocalDate birthDate, Integer yearsWorking,
+                    String email, Department department) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;

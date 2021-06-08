@@ -21,9 +21,9 @@
         <form action="${pageContext.request.contextPath}/app?action=addDept" method="post">
             <div class="container">
                 <div class="container error">
-                    <c:if test="${not empty requestScope.error_list}">
-                        <c:forEach items="${errorList}" var="errorList">
-                            <p><c:out value="${errorList}"/></p>
+                    <c:if test="${not empty requestScope.errorList}">
+                        <c:forEach items="${errorList}" var="error">
+                            <p>${error}</p>
                         </c:forEach>
                     </c:if>
                 </div>

@@ -39,4 +39,16 @@ public interface IService<T> {
      * @return entity from table
      */
     T findEntity(Long id);
+
+    /**
+     * Finds count of all rows in table.
+     * @return count
+     */
+    Long findCount();
+
+    /**
+     * Checks expression in table.
+     * @return true, if expression is unique
+     */
+    boolean isUniqueExpression(String expression);
 }

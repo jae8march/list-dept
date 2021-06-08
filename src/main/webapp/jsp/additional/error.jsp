@@ -6,9 +6,7 @@
     <title>Something went wrong</title>
 </head>
 <style>
-    <%@include file='../../style/table.css' %>
     <%@include file='../../style/main.css' %>
-    <%@include file='../../style/form.css' %>/
 </style>
 <body>
 <div id="container">

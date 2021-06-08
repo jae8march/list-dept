@@ -25,7 +25,7 @@ CREATE TABLE employee (
 -- -- TEST DATA, OPTIONAL
 
 -- INSERT INTO dept VALUES (1, 'first department', 120123456789);
--- INSERT INTO dept VALUES (2, 'second department', 0987654321);
+-- INSERT INTO dept VALUES (2, 'second department', 0765432134);
 --
 -- INSERT INTO employee VALUES (1, 'first employee', '01-01-2000', 'qwe@qwe.com', 25, 1);
 -- INSERT INTO employee VALUES (2, 'second employee', '10-10-1999', 'asdfg@asd.com', 2, 2);

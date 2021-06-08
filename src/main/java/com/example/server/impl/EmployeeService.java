@@ -1,10 +1,10 @@
 package com.example.server.impl;
 
-import com.example.server.inerf.IService;
 import com.example.dao.connection.SingletonConnection;
 import com.example.dao.impl.EmployeeDAO;
 import com.example.entity.Employee;
 import com.example.server.inerf.IEmployeeService;
+import com.example.server.inerf.IService;
 import java.util.Set;
 
 /**
@@ -12,15 +12,6 @@ import java.util.Set;
  */
 public class EmployeeService implements IEmployeeService {
     SingletonConnection connection = SingletonConnection.getInstance();
-
-    /**
-     * {@link IEmployeeService#findByEmail(String)}
-     */
-    @Override
-    public int findByEmail(String expression) {
-        EmployeeDAO employeeDao = connection.getEmployeeDao();
-        return employeeDao.findAllEmployeeByEmail(expression);
-    }
 
     /**
      * {@link IEmployeeService#findFromDept(Long)}
@@ -46,7 +37,8 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public boolean create(Employee entity) {
         EmployeeDAO employeeDao = connection.getEmployeeDao();
-        return employeeDao.addInDataBase(entity);
+        long count = this.findCount() + 1;
+        return employeeDao.addInDataBase(entity, count);
     }
 
     /**
@@ -78,7 +70,6 @@ public class EmployeeService implements IEmployeeService {
         return employeeDao.findAllFromDataBase();
     }
 
-
     /**
      * {@link IService#findEntity(Long)}
      */
@@ -86,5 +77,24 @@ public class EmployeeService implements IEmployeeService {
     public Employee findEntity(Long id) {
         EmployeeDAO employeeDao = connection.getEmployeeDao();
         return employeeDao.findByIdInDataBase(id);
+    }
+
+    /**
+     * {@link IService#findCount()}
+     */
+    @Override
+    public Long findCount() {
+        EmployeeDAO employeeDao = connection.getEmployeeDao();
+        return employeeDao.findCountInDataBase();
+    }
+
+    /**
+     * {@link IService#isUniqueExpression(String)}
+     */
+    @Override
+    public boolean isUniqueExpression(String expression) {
+        EmployeeDAO employeeDao = connection.getEmployeeDao();
+        int count = employeeDao.findCountByExpressionInDataBase(expression);
+        return count == 0;
     }
 }

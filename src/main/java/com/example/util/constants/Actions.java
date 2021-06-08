@@ -1,5 +1,8 @@
 package com.example.util.constants;
 
+/**
+ * Class with action for servlet.
+ */
 public final class Actions {
     private Actions(){}
 

@@ -20,6 +20,9 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * The class for handling the input action and starting the method.
+ */
 public class CommandFactory {
     private static CommandFactory factory = new CommandFactory();
     private final Map<String, ICommand> commands = new HashMap<>();
@@ -40,7 +43,7 @@ public class CommandFactory {
         commands.put("listDept", new ListDepartmentsCommand(departmentService));
 
         /** Employee commands */
-        commands.put("addEmpl", new AddEmployeeCommand(employeeService, departmentService));
+        commands.put("addEmpl", new AddEmployeeCommand(employeeService));
         commands.put("addPageEmpl", new AddPageEmployeeCommand());
 
         commands.put("deleteEmpl", new DeleteEmployeeCommand(employeeService));

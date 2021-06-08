@@ -18,22 +18,25 @@ import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+/**
+ * Extending class EmployeeDAO for working with a table 'employee'.
+ */
 public class EmployeeDAO extends AbstractDecoratorDao<Employee> implements IEmployeeDao {
     private final Connection connection;
 
     public EmployeeDAO(Connection connection) {
         this.connection = connection;
-        super.mapperFromSql = mapperFromSql;
+        super.mapperFromSql = mapper;
+        super.connection = connection;
     }
 
     /**
-     * {@link IDao#addInDataBase(Object)}
+     * {@link IDao#addInDataBase(Object, Long)}
      */
     @Override
-    public boolean addInDataBase(Employee entity) {
-        try(PreparedStatement statement = connection.prepareStatement(QueriesSql.SQL_CREATE_EMPLOYEE)) {
-
-            statement.setLong(1,findCount(connection, QueriesSql.SQL_COUNT_ROW_EMPLOYEE) + 1);
+    public boolean addInDataBase(Employee entity, Long id) {
+        try (PreparedStatement statement = connection.prepareStatement(QueriesSql.SQL_CREATE_EMPLOYEE)) {
+            statement.setLong(1, id);
             statement.setString(2, entity.getName());
             statement.setDate(3, Date.valueOf(entity.getBirthDate()));
             statement.setString(4, entity.getEmail());
@@ -41,6 +44,7 @@ public class EmployeeDAO extends AbstractDecoratorDao<Employee> implements IEmpl
             statement.setLong(6, entity.getDepartment().getId());
 
             statement.executeQuery();
+
             connection.close();
         } catch (SQLException exception) {
             return false;
@@ -75,7 +79,7 @@ public class EmployeeDAO extends AbstractDecoratorDao<Employee> implements IEmpl
      */
     @Override
     public boolean deleteFromDataBase(Long id) {
-        return statementWithParameter(connection, id, QueriesSql.SQL_DELETE_EMPLOYEE);
+        return statementWithParameter(id, QueriesSql.SQL_DELETE_EMPLOYEE);
     }
 
     /**
@@ -83,15 +87,7 @@ public class EmployeeDAO extends AbstractDecoratorDao<Employee> implements IEmpl
      */
     @Override
     public boolean deleteFromDepartment(Long id) {
-        return statementWithParameter(connection, id, QueriesSql.SQL_DELETE_EMPLOYEES_FROM_DEPARTMENT);
-    }
-
-    /**
-     * {@link IEmployeeDao#findAllEmployeeByEmail(String)}
-     */
-    @Override
-    public int findAllEmployeeByEmail(String expression) {
-        return findCountByExpression(connection, expression, QueriesSql.SQL_EMPLOYEE_EMAIL);
+        return statementWithParameter(id, QueriesSql.SQL_DELETE_EMPLOYEES_FROM_DEPARTMENT);
     }
 
     /**
@@ -99,7 +95,7 @@ public class EmployeeDAO extends AbstractDecoratorDao<Employee> implements IEmpl
      */
     @Override
     public Set<Employee> findAllFromDataBase() {
-        return findAll(connection, QueriesSql.SQL_ALL_EMPLOYEE);
+        return findAll(QueriesSql.SQL_ALL_EMPLOYEE);
     }
 
     /**
@@ -107,7 +103,23 @@ public class EmployeeDAO extends AbstractDecoratorDao<Employee> implements IEmpl
      */
     @Override
     public Employee findByIdInDataBase(Long id) {
-        return findById(connection, QueriesSql.SQL_FIND_EMPLOYEE, id, new Employee());
+        return findById(QueriesSql.SQL_FIND_BY_ID_EMPLOYEE, id, new Employee());
+    }
+
+    /**
+     * {@link IDao#findCountInDataBase()}
+     */
+    @Override
+    public Long findCountInDataBase() {
+        return findCount(QueriesSql.SQL_COUNT_ROW_EMPLOYEE);
+    }
+
+    /**
+     * {@link IDao#findCountByExpressionInDataBase(String)}
+     */
+    @Override
+    public int findCountByExpressionInDataBase(String expression) {
+        return findCountByExpression(expression, QueriesSql.SQL_FIND_BY_EMAIL_EMPLOYEE);
     }
 
     /**
@@ -121,7 +133,7 @@ public class EmployeeDAO extends AbstractDecoratorDao<Employee> implements IEmpl
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                set.add(mapperFromSql.map(resultSet));
+                set.add(mapper.map(resultSet));
             }
 
             resultSet.close();
@@ -136,7 +148,7 @@ public class EmployeeDAO extends AbstractDecoratorDao<Employee> implements IEmpl
      * Mapper for creating Employee from a ResultSet.
      * {@link Mapper#map(Object)}
      */
-    private Mapper<ResultSet, Employee> mapperFromSql = (ResultSet resultSet) -> {
+    private Mapper<ResultSet, Employee> mapper = (ResultSet resultSet) -> {
         Employee employee = new Employee();
         Department department = new Department();
         try {

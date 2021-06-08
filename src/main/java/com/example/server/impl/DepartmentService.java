@@ -15,21 +15,13 @@ public class DepartmentService implements IDepartmentService {
     SingletonConnection connection = SingletonConnection.getInstance();
 
     /**
-     * {@link IDepartmentService#findByName(String)}
-     */
-    @Override
-    public int findByName(String expression) {
-        DepartmentDAO departmentDao = connection.getDepartmentDao();
-        return departmentDao.findAllDepartmentByName(expression);
-    }
-
-    /**
      * {@link IService#create(Object)}
      */
     @Override
     public boolean create(Department entity) {
         DepartmentDAO departmentDao = connection.getDepartmentDao();
-        return departmentDao.addInDataBase(entity);
+        long count = this.findCount() + 1;
+        return departmentDao.addInDataBase(entity, count);
     }
 
     /**
@@ -68,5 +60,24 @@ public class DepartmentService implements IDepartmentService {
     public Department findEntity(Long id) {
         DepartmentDAO departmentDao = connection.getDepartmentDao();
         return departmentDao.findByIdInDataBase(id);
+    }
+
+    /**
+     * {@link IService#findCount()}
+     */
+    @Override
+    public Long findCount() {
+        DepartmentDAO departmentDao = connection.getDepartmentDao();
+        return departmentDao.findCountInDataBase();
+    }
+
+    /**
+     * {@link IService#isUniqueExpression(String)}
+     */
+    @Override
+    public boolean isUniqueExpression(String expression) {
+        DepartmentDAO departmentDao = connection.getDepartmentDao();
+        int count = departmentDao.findCountByExpressionInDataBase(expression);
+        return count == 0;
     }
 }
