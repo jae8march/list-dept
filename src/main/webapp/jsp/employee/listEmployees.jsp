@@ -43,7 +43,7 @@
                 <td>
                     <ul>
                         <li>
-                            <form name="deleteDept" action="${pageContext.request.contextPath}/app?action=editPageEmpl" method="post">
+                            <form name="editDept" action="${pageContext.request.contextPath}/app?action=editPageEmpl" method="post">
                                 <button name = "emplId" value="${employees.id}" class="button" type="submit">
                                     Edit
                                 </button>

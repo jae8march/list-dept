@@ -35,7 +35,7 @@
                 <td>
                     <ul>
                         <li>
-                            <form name="deleteDept" action="${pageContext.request.contextPath}/app?action=editPageDept" method="post">
+                            <form name="editDept" action="${pageContext.request.contextPath}/app?action=editPageDept" method="post">
                                 <button name = "deptId" value="${departments.id}" class="button" type="submit">
                                     Edit
                                 </button>
@@ -44,7 +44,7 @@
                         <li>
                         </li>
                         <li>
-                            <form name="deleteDept" action="${pageContext.request.contextPath}/app?action=listEmpl" method="post">
+                            <form name="emplOfDept" action="${pageContext.request.contextPath}/app?action=listEmpl" method="post">
                                 <button name = "deptId" value="${departments.id}" class="button" type="submit">
                                     List of employees
                                 </button>

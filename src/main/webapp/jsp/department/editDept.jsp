@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>New dept</title>
+    <title>Edit Dept ${dept.id}</title>
 </head>
 <style>
     <%@include file='../../style/table.css' %>
@@ -14,11 +14,11 @@
 <body>
 <div id="container">
     <div id="header">
-        Create department
+        Edit Department
     </div>
     <div id="content">
         <br>
-        <form action="${pageContext.request.contextPath}/app?action=addDept" method="post">
+        <form action="${pageContext.request.contextPath}/app?action=editDept" method="post">
             <div class="container">
                 <div class="container error">
                     <c:if test="${not empty requestScope.error_list}">
@@ -29,13 +29,13 @@
                 </div>
                 <hr>
                 <label for="name" class="label">Name of new department</label>
-                <input type="text" placeholder="Enter unique name" value="${name}" id="name" name="name" required>
+                <input type="text" placeholder="Enter unique name" value="${dept.name}" id="name" name="name" required>
 
                 <label for="phone" class="label">Department phone number</label>
-                <input type="text" placeholder="Phone" value="${phone}" id="phone" name="phone" required>
+                <input type="text" placeholder="Phone" value="${dept.number}" id="phone" name="phone" required>
                 <hr>
 
-                <button type="submit" class="add">Add</button>
+                <button type="submit" class="add">Edit</button>
             </div>
 
             <div class="container back">

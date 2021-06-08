@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>New employee</title>
+    <title>Edit employee ${employee.id}</title>
 </head>
 <style>
     <%@include file='../../style/table.css' %>
@@ -14,11 +14,11 @@
 <body>
 <div id="container">
     <div id="header">
-        New employee
+        Edit employee
     </div>
     <div id="content">
         <br>
-        <form action="${pageContext.request.contextPath}/app?action=addEmpl" method="post">
+        <form action="${pageContext.request.contextPath}/app?action=editEmpl" method="post">
             <div class="container">
                 <div class="container error">
                     <c:if test="${not empty requestScope.error_list}">
@@ -30,19 +30,22 @@
 
                 <hr>
                 <label for="name" class="label">Name of employee</label>
-                <input type="text" placeholder="Name" value="${emplName}" id="name" name="name" required>
+                <input type="text" placeholder="Name" value="${employee.name}" id="name"  name="name" required>
 
                 <label for="yearsWorking" class="label">How many years has it been working</label>
-                <input type="text" placeholder="Experience" value="${emplYears}" id="yearsWorking" name="yearsWorking" required>
+                <input type="text" placeholder="How many years has it been working" value="${employee.yearsWorking}" id="yearsWorking" name="yearsWorking" required>
 
                 <label for="email" class="label">Email</label>
-                <input type="text" placeholder="Email" value="${emplEmail}" id="email" name="email" required>
+                <input type="text" placeholder="Email" value="${employee.email}" id="email" name="email" required>
+
+                <label for="department" class="label">In which department does the new employee work</label>
+                <input type="text" placeholder="Department" value="${employee.department.id}" id="department" name="department" required>
 
                 <label for="dateOfBirth" class="label">Birthday</label>
-                <input type="date" value="${emplBirth}" id="dateOfBirth" name="dateOfBirth" placeholder="Date Of Birth" required>
+                <input type="date" value="${employee.birthDate}" id="dateOfBirth" name="dateOfBirth" placeholder="Date Of Birth" required>
                 <hr>
 
-                <button type="submit" class="add">Add</button>
+                <button type="submit" class="add">Edit</button>
             </div>
 
             <div class="container back">

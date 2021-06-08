@@ -35,7 +35,7 @@ public class CommandFactory {
         commands.put("deleteDept", new DeleteDepartmentCommand(departmentService, employeeService));
 
         commands.put("editDept", new EditDepartmentCommand(departmentService));
-        commands.put("editPageDept", new EditPageDepartmentCommand());
+        commands.put("editPageDept", new EditPageDepartmentCommand(departmentService));
 
         commands.put("listDept", new ListDepartmentsCommand(departmentService));
 
@@ -46,7 +46,7 @@ public class CommandFactory {
         commands.put("deleteEmpl", new DeleteEmployeeCommand(employeeService));
 
         commands.put("editEmpl", new EditEmployeeCommand(employeeService));
-        commands.put("editPageEmpl", new EditPageEmployeeCommand());
+        commands.put("editPageEmpl", new EditPageEmployeeCommand(employeeService));
 
         commands.put("listEmpl", new ListEmployeesCommand(employeeService));
     }
