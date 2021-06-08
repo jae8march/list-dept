@@ -50,7 +50,7 @@
                             </form>
                         </li>
                             <form name="deleteDept" action="${pageContext.request.contextPath}/app?action=deleteEmpl" method="post">
-                                <button name = "emplId" value="${employees.id}" class="button" type="submit">
+                                <button name = "emplId" onclick="return confirm('Are you sure you want to do this?')" value="${employees.id}" class="button" type="submit">
                                     Delete
                                 </button>
                             </form>

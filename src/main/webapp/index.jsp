@@ -8,6 +8,7 @@
 <style>
     <%@include file='style/table.css' %>
     <%@include file='style/main.css' %>
+    <%@include file='style/main.css' %>
 </style>
 
 <body>
@@ -52,7 +53,9 @@
                         </li>
                         <li>
                             <form name="deleteDept" action="${pageContext.request.contextPath}/app?action=deleteDept" method="post">
-                                <button name = "deptId" value="${departments.id}" class="button" type="submit">
+                                <button name = "deptId" onclick="return confirm('Are you sure you want to do this? ' +
+                                 'When a department is deleted, employees from this department are also deleted')"
+                                        value="${departments.id}" class="button" type="submit">
                                     Delete
                                 </button>
                             </form>
