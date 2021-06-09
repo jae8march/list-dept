@@ -53,14 +53,14 @@ public class EditEmployeeCommand implements ICommand {
         checkDept(deptId);
 
         LocalDate dateOfBirth = LocalDate.parse(birthDateStr);
-//TODO
+
         if (!errors.isEmpty()) {
             request.setAttribute("errorList", errors);
 
             request.setAttribute("id", id);
             request.setAttribute("name", name);
             request.setAttribute("email", email);
-            request.setAttribute("birthDate", dateOfBirth);//todo check if its correct
+            request.setAttribute("birthDate", dateOfBirth);
             request.setAttribute("yearsWorking", yearsWorkingStr);
             request.setAttribute("deptId", deptId);
 
