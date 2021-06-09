@@ -52,7 +52,7 @@ public abstract class AbstractDecoratorDao<T> {
         try (PreparedStatement statement = connection.prepareStatement(queries)) {
             statement.setLong(1, id);
 
-            statement.executeQuery();
+            statement.executeUpdate();
 
             connection.close();
         } catch (SQLException exception) {
