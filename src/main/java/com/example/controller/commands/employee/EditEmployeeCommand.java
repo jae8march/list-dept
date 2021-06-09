@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 public class EditEmployeeCommand implements ICommand {
     private final EmployeeService employeeService;
     private final DepartmentService departmentService;
-    private final List<String> errors = new ArrayList<>();
+    private List<String> errors;
 
     public EditEmployeeCommand(EmployeeService employeeService, DepartmentService departmentService) {
         this.employeeService = employeeService;
@@ -33,18 +33,19 @@ public class EditEmployeeCommand implements ICommand {
      */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
-        Long id = Long.valueOf(request.getParameter("id"));
+        Long id = Long.valueOf(request.getParameter("emplId"));
 
         Employee empl = employeeService.findEntity(id);
+        errors = new ArrayList<>();
 
         String name = request.getParameter("name");
         String email = request.getParameter("email");
 
         String yearsWorkingStr = request.getParameter("yearsWorking");
-        String birthDateStr = request.getParameter("birthDate");
-        String deptId = request.getParameter("idDept");
+        String birthDateStr = request.getParameter("dateOfBirth");
+        String deptId = request.getParameter("deptId");
 
-        if (Objects.equals(empl.getEmail(), email)) {
+        if (!Objects.equals(empl.getEmail(), email)) {
             checkEmail(email);
         }
 
@@ -57,10 +58,10 @@ public class EditEmployeeCommand implements ICommand {
         if (!errors.isEmpty()) {
             request.setAttribute("errorList", errors);
 
-            request.setAttribute("id", id);
+            request.setAttribute("emplId", empl.getId());
             request.setAttribute("name", name);
             request.setAttribute("email", email);
-            request.setAttribute("birthDate", dateOfBirth);
+            request.setAttribute("birthDate", birthDateStr);
             request.setAttribute("yearsWorking", yearsWorkingStr);
             request.setAttribute("deptId", deptId);
 
@@ -68,7 +69,7 @@ public class EditEmployeeCommand implements ICommand {
         } else {
             Department department = new Department();
             department.setId(Long.valueOf(deptId));
-            Employee employee = new Employee(name, dateOfBirth, Integer.parseInt(yearsWorkingStr), email, department);
+            Employee employee = new Employee(id, name, dateOfBirth, Integer.parseInt(yearsWorkingStr), email, department);
 
             if (employeeService.update(employee)) {
                 forward(request, response, Actions.ACTION_EMPLOYEE_LIST);
@@ -103,8 +104,8 @@ public class EditEmployeeCommand implements ICommand {
     private void checkDept(String dept) {
         if (!Validator.isValidInt(dept)) {
             errors.add("Enter integer for the dept");
-        } else if (departmentService.findEntity(Long.valueOf(dept)) == null) {
-            errors.add("Enter the allowed number of years of work");
+        } else if (departmentService.findEntity(Long.valueOf(dept)).getName() == null) {
+            errors.add("Department with " + dept + " id doesn't exist");
         }
     }
 }

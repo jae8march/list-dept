@@ -17,6 +17,7 @@ public class EditPageEmployeeCommand implements ICommand {
     public EditPageEmployeeCommand(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
+
     /**
      * {@link ICommand#execute}
      */
@@ -25,7 +26,7 @@ public class EditPageEmployeeCommand implements ICommand {
         Long emplId = Long.valueOf(request.getParameter("emplId"));
         Employee employee = employeeService.findEntity(emplId);
 
-        request.setAttribute("id", employee.getId());
+        request.setAttribute("emplId", employee.getId());
         request.setAttribute("name", employee.getName());
         request.setAttribute("email", employee.getEmail());
         request.setAttribute("birthDate", employee.getBirthDate());

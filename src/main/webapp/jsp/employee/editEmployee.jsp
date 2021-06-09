@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>Edit employee ${id}</title>
+    <title>Edit employee ${emplId}</title>
 </head>
 <style>
     <%@include file='../../style/table.css' %>
@@ -38,14 +38,14 @@
                 <label for="email" class="label">Email</label>
                 <input type="text" placeholder="Email" value="${email}" id="email" name="email" required>
 
-                <label for="department" class="label">In which department does employee work</label>
-                <input type="text" placeholder="Department" value="${idDept}" id="department" name="department" required>
+                <label for="deptId" class="label">In which department does employee work</label>
+                <input type="text" placeholder="Department" value="${deptId}" id="deptId" name="deptId" required>
 
                 <label for="dateOfBirth" class="label">Birthday</label>
                 <input type="date" value="${birthDate}" id="dateOfBirth" name="dateOfBirth" placeholder="Date Of Birth" required>
                 <hr>
 
-                <input type="hidden" name="emplId" id="emplId" value="${id}">
+                <input type="hidden" name="emplId" id="emplId" value="${emplId}">
 
                 <button type="submit" class="add">Edit</button>
             </div>

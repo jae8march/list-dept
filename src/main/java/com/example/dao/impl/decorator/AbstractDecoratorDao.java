@@ -81,7 +81,6 @@ public abstract class AbstractDecoratorDao<T> {
 
             resultSet.close();
             connection.close();
-
         } catch (SQLException exception) {
             exception.printStackTrace();
         }

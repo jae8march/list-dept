@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class EditDepartmentCommand implements ICommand {
     private final DepartmentService departmentService;
-    private final List<String> errors = new ArrayList<>();
+    private List<String> errors;
 
     public EditDepartmentCommand(DepartmentService departmentService) {
         this.departmentService = departmentService;
@@ -32,6 +32,7 @@ public class EditDepartmentCommand implements ICommand {
         Long deptId = Long.valueOf(request.getParameter("deptId"));
 
         Department dept = departmentService.findEntity(deptId);
+        errors = new ArrayList<>();
 
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");

@@ -39,7 +39,7 @@ public class AddDepartmentCommand implements ICommand {
 
         if (!Validator.isValidPhone(phone)) {
             errors.add("Phone number is not valid");
-        } else if (departmentService.isUniquePhone(phone)) {
+        } else if (!departmentService.isUniquePhone(phone)) {
             errors.add("Phone number is not unique");
         }
 
