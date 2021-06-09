@@ -48,7 +48,7 @@ public class CommandFactory {
 
         commands.put("deleteEmpl", new DeleteEmployeeCommand(employeeService));
 
-        commands.put("editEmpl", new EditEmployeeCommand(employeeService));
+        commands.put("editEmpl", new EditEmployeeCommand(employeeService, departmentService));
         commands.put("editPageEmpl", new EditPageEmployeeCommand(employeeService));
 
         commands.put("listEmpl", new ListEmployeesCommand(employeeService));

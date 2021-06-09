@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>Edit Dept ${dept.id}</title>
+    <title>Edit Dept ${id}</title>
 </head>
 <style>
     <%@include file='../../style/table.css' %>
@@ -21,19 +21,22 @@
         <form action="${pageContext.request.contextPath}/app?action=editDept" method="post">
             <div class="container">
                 <div class="container error">
-                    <c:if test="${not empty requestScope.error_list}">
-                        <c:forEach items="${errorList}" var="errorList">
-                            <p><c:out value="${errorList}"/></p>
+                    <c:if test="${not empty requestScope.errorList}">
+                        <c:forEach items="${errorList}" var="error">
+                            <p>${error}</p>
                         </c:forEach>
                     </c:if>
                 </div>
+
                 <hr>
                 <label for="name" class="label">Name of new department</label>
-                <input type="text" placeholder="Enter unique name" value="${dept.name}" id="name" name="name" required>
+                <input type="text" placeholder="Enter unique name" value="${name}" id="name" name="name" required>
 
                 <label for="phone" class="label">Department phone number</label>
-                <input type="text" placeholder="Phone" value="${dept.number}" id="phone" name="phone" required>
+                <input type="text" placeholder="Phone" value="${phone}" id="phone" name="phone" required>
                 <hr>
+
+                <input type="hidden" name="deptId" id="deptId" value="${id}">
 
                 <button type="submit" class="add">Edit</button>
             </div>

@@ -106,6 +106,14 @@ public class DepartmentDAO extends AbstractDecoratorDao<Department> implements I
     }
 
     /**
+     * {@link IDao#findCountByExpressionInDataBase(String)}
+     */
+    @Override
+    public int findCountByPhoneInDataBase(String expression) {
+        return findCountByExpression(expression, QueriesSql.SQL_FIND_BY_PHONE_DEPARTMENT);
+    }
+
+    /**
      * Mapper for creating Department from ResultSet.
      * {@link Mapper#map(Object)}
      */

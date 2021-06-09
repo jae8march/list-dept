@@ -25,6 +25,7 @@ public final class QueriesSql {
     /** DEPARTMENT */
     public static final String SQL_FIND_BY_ID_DEPARTMENT = "SELECT * FROM dept  WHERE dept_id=?";
     public static final String SQL_FIND_BY_NAME_DEPARTMENT = "SELECT count(*) FROM dept  WHERE dept_name=?";
+    public static final String SQL_FIND_BY_PHONE_DEPARTMENT = "SELECT count(*) FROM dept  WHERE dept_phone_number=?";
 
     public static final String SQL_MAX_ID_DEPARTMENT = "SELECT max(dept_id) AS max FROM dept";
     public static final String SQL_CREATE_DEPARTMENT = "INSERT INTO dept VALUES (?, ?, ?)";

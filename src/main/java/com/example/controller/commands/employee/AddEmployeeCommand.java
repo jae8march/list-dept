@@ -50,7 +50,7 @@ public class AddEmployeeCommand implements ICommand {
 
         if (!Validator.isValidEmail(email)) {
             errors.add("Please enter a valid mail format");
-        } else if (!employeeService.isUniqueExpression(email)) {
+        } else if (!employeeService.isUniqueEmail(email)) {
             errors.add("An employee with this mail exists");
         }
 

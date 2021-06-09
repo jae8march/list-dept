@@ -72,12 +72,22 @@ public class DepartmentService implements IDepartmentService {
     }
 
     /**
-     * {@link IService#isUniqueExpression(String)}
+     * {@link IDepartmentService#isUniqueName(String)}
      */
     @Override
-    public boolean isUniqueExpression(String expression) {
+    public boolean isUniqueName(String name) {
         DepartmentDAO departmentDao = connection.getDepartmentDao();
-        int count = departmentDao.findCountByExpressionInDataBase(expression);
+        int count = departmentDao.findCountByExpressionInDataBase(name);
+        return count == 0;
+    }
+
+    /**
+     * {@link IDepartmentService#isUniquePhone(String)}
+     */
+    @Override
+    public boolean isUniquePhone(String expression) {
+        DepartmentDAO departmentDao = connection.getDepartmentDao();
+        int count = departmentDao.findCountByPhoneInDataBase(expression);
         return count == 0;
     }
 }

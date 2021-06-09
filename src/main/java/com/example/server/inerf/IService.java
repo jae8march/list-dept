@@ -45,10 +45,4 @@ public interface IService<T> {
      * @return count
      */
     Long findMaxId();
-
-    /**
-     * Checks expression in table.
-     * @return true, if expression is unique
-     */
-    boolean isUniqueExpression(String expression);
 }

@@ -89,10 +89,10 @@ public class EmployeeService implements IEmployeeService {
     }
 
     /**
-     * {@link IService#isUniqueExpression(String)}
+     * {@link IEmployeeService#isUniqueEmail(String)}
      */
     @Override
-    public boolean isUniqueExpression(String expression) {
+    public boolean isUniqueEmail(String expression) {
         EmployeeDAO employeeDao = connection.getEmployeeDao();
         int count = employeeDao.findCountByExpressionInDataBase(expression);
         return count == 0;

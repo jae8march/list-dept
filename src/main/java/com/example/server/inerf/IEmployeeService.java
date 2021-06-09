@@ -21,4 +21,11 @@ public interface IEmployeeService extends IService<Employee> {
      * @return true if delete all employees
      */
     boolean deleteEmployeesFromDept(Long id);
+
+    /**
+     * Checks if email is unique
+     * @param email enter
+     * @return true, if unique
+     */
+    boolean isUniqueEmail(String email);
 }
