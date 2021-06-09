@@ -41,10 +41,10 @@ public interface IService<T> {
     T findEntity(Long id);
 
     /**
-     * Finds count of all rows in table.
+     * Finds max id in table.
      * @return count
      */
-    Long findCount();
+    Long findMaxId();
 
     /**
      * Checks expression in table.

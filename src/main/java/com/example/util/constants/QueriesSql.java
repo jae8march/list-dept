@@ -10,7 +10,7 @@ public final class QueriesSql {
     public static final String SQL_FIND_BY_ID_EMPLOYEE = "SELECT * FROM employee WHERE employee_id=?";
     public static final String SQL_FIND_BY_EMAIL_EMPLOYEE = "SELECT count(*) FROM employee WHERE employee_email=?";
 
-    public static final String SQL_COUNT_ROW_EMPLOYEE = "SELECT count(*) FROM employee";
+    public static final String SQL_MAX_ID_EMPLOYEE = "SELECT max(employee_id) AS max FROM employee";
     public static final String SQL_CREATE_EMPLOYEE = "INSERT INTO employee VALUES (?, ?, ?, ?, ?, ?)";
 
     public static final String SQL_UPDATE_EMPLOYEE = "UPDATE employee SET employee_name=?, employee_birth=?, " +
@@ -26,7 +26,7 @@ public final class QueriesSql {
     public static final String SQL_FIND_BY_ID_DEPARTMENT = "SELECT * FROM dept  WHERE dept_id=?";
     public static final String SQL_FIND_BY_NAME_DEPARTMENT = "SELECT count(*) FROM dept  WHERE dept_name=?";
 
-    public static final String SQL_COUNT_ROW_DEPARTMENT = "SELECT count(*) FROM dept";
+    public static final String SQL_MAX_ID_DEPARTMENT = "SELECT max(dept_id) AS max FROM dept";
     public static final String SQL_CREATE_DEPARTMENT = "INSERT INTO dept VALUES (?, ?, ?)";
 
     public static final String SQL_UPDATE_DEPARTMENT = "UPDATE dept SET dept_name=?, dept_phone_number=? " +

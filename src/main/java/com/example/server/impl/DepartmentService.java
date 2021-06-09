@@ -20,7 +20,7 @@ public class DepartmentService implements IDepartmentService {
     @Override
     public boolean create(Department entity) {
         DepartmentDAO departmentDao = connection.getDepartmentDao();
-        long count = this.findCount() + 1;
+        long count = this.findMaxId() + 1;
         return departmentDao.addInDataBase(entity, count);
     }
 
@@ -63,12 +63,12 @@ public class DepartmentService implements IDepartmentService {
     }
 
     /**
-     * {@link IService#findCount()}
+     * {@link IService#findMaxId()}
      */
     @Override
-    public Long findCount() {
+    public Long findMaxId() {
         DepartmentDAO departmentDao = connection.getDepartmentDao();
-        return departmentDao.findCountInDataBase();
+        return departmentDao.findMaxIdInDataBase();
     }
 
     /**

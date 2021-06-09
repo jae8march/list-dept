@@ -43,10 +43,11 @@ public class EmployeeDAO extends AbstractDecoratorDao<Employee> implements IEmpl
             statement.setInt(5, entity.getYearsWorking());
             statement.setLong(6, entity.getDepartment().getId());
 
-            statement.executeQuery();
+            statement.executeUpdate();
 
             connection.close();
         } catch (SQLException exception) {
+            exception.printStackTrace();
             return false;
         }
         return true;
@@ -68,7 +69,8 @@ public class EmployeeDAO extends AbstractDecoratorDao<Employee> implements IEmpl
             statement.executeUpdate();
 
             connection.close();
-        } catch (SQLException e) {
+        } catch (SQLException exception) {
+            exception.printStackTrace();
             return false;
         }
         return true;
@@ -107,11 +109,11 @@ public class EmployeeDAO extends AbstractDecoratorDao<Employee> implements IEmpl
     }
 
     /**
-     * {@link IDao#findCountInDataBase()}
+     * {@link IDao#findMaxIdInDataBase()}
      */
     @Override
-    public Long findCountInDataBase() {
-        return findCount(QueriesSql.SQL_COUNT_ROW_EMPLOYEE);
+    public Long findMaxIdInDataBase() {
+        return findMax(QueriesSql.SQL_MAX_ID_EMPLOYEE);
     }
 
     /**

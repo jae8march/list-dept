@@ -90,11 +90,11 @@ public class DepartmentDAO extends AbstractDecoratorDao<Department> implements I
     }
 
     /**
-     * {@link IDao#findCountInDataBase()}
+     * {@link IDao#findMaxIdInDataBase()}
      */
     @Override
-    public Long findCountInDataBase() {
-        return findCount(QueriesSql.SQL_COUNT_ROW_DEPARTMENT);
+    public Long findMaxIdInDataBase() {
+        return findMax(QueriesSql.SQL_MAX_ID_DEPARTMENT);
     }
 
     /**

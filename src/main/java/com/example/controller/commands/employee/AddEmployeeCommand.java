@@ -70,9 +70,11 @@ public class AddEmployeeCommand implements ICommand {
             Department department = new Department();
             department.setId(deptId);
             Employee employee = new Employee(name, dateOfBirth, yearsWorking, email, department);
-
-            employeeService.create(employee);
-            forward(request, response, Actions.ACTION_EMPLOYEE_LIST);
+            if (employeeService.create(employee)) {
+                forward(request, response, Actions.ACTION_EMPLOYEE_LIST);
+            } else {
+                forward(request, response, Paths.ERROR);
+            }
         }
     }
 }

@@ -56,6 +56,7 @@ public abstract class AbstractDecoratorDao<T> {
 
             connection.close();
         } catch (SQLException exception) {
+            exception.printStackTrace();
             return false;
         }
         return true;
@@ -88,18 +89,17 @@ public abstract class AbstractDecoratorDao<T> {
     }
 
     /**
-     * Finds count rows in table.
+     * Finds max in table.
      * @param queries to table
-     * @return count of rows
+     * @return max
      */
-    protected Long findCount(String queries) {
-        long count = 0;
+    protected Long findMax(String queries) {
+        long count = -1;
         try (PreparedStatement statement = connection.prepareStatement(queries)) {
-
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                count = resultSet.getLong("count");
+                return resultSet.getLong("max");
             }
 
             resultSet.close();

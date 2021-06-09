@@ -38,7 +38,7 @@
                 <label for="email" class="label">Email</label>
                 <input type="text" placeholder="Email" value="${employee.email}" id="email" name="email" required>
 
-                <label for="department" class="label">In which department does the new employee work</label>
+                <label for="department" class="label">In which department does employee work</label>
                 <input type="text" placeholder="Department" value="${employee.department.id}" id="department" name="department" required>
 
                 <label for="dateOfBirth" class="label">Birthday</label>

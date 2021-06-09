@@ -41,10 +41,10 @@ public interface IDao<T>  {
     T findByIdInDataBase(Long id);
 
     /**
-     * Finds count rows in table.
+     * Finds max id in table.
      * @return count of rows
      */
-    Long findCountInDataBase();
+    Long findMaxIdInDataBase();
 
     /**
      * Finds an object by a expression column in a table.

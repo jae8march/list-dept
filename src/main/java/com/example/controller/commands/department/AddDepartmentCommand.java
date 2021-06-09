@@ -52,8 +52,11 @@ public class AddDepartmentCommand implements ICommand {
             forward(request, response, Paths.NEW_DEPT);
         } else {
             Department department = new Department(name, phone);
-            departmentService.create(department);
-            forward(request, response, Actions.ACTION_DEPT_LIST);
+            if (departmentService.create(department)) {
+                forward(request, response, Actions.ACTION_DEPT_LIST);
+            } else {
+                forward(request, response, Paths.ERROR);
+            }
         }
     }
 }

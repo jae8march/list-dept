@@ -37,7 +37,7 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public boolean create(Employee entity) {
         EmployeeDAO employeeDao = connection.getEmployeeDao();
-        long count = this.findCount() + 1;
+        long count = this.findMaxId() + 1;
         return employeeDao.addInDataBase(entity, count);
     }
 
@@ -80,12 +80,12 @@ public class EmployeeService implements IEmployeeService {
     }
 
     /**
-     * {@link IService#findCount()}
+     * {@link IService#findMaxId()}
      */
     @Override
-    public Long findCount() {
+    public Long findMaxId() {
         EmployeeDAO employeeDao = connection.getEmployeeDao();
-        return employeeDao.findCountInDataBase();
+        return employeeDao.findMaxIdInDataBase();
     }
 
     /**
